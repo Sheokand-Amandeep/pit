@@ -80,3 +80,7 @@ The terminal shows:
 - `normalizer.py` — business-friendly PIT fields and pricing
 - `progress.py` — terminal progress bar
 - `exporter.py` — Excel/CSV formatting
+
+
+### XBRL mapping note
+NSE/BSE PIT V2.0 files use `MainI` for company-level facts and `Disclosure1`, `Disclosure2`, etc. as XBRL `contextRef` values for each disclosure. The parser groups facts by those contextRef values. `SecuritiesAcquiredOrDisposedValueOfSecurity` is retained as Transaction Value; it is not treated as a share price.
