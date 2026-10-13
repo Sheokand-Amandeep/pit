@@ -41,7 +41,11 @@ class ProgressBar:
         cols = shutil.get_terminal_size(fallback=(120, 24)).columns
         line = line[: cols - 1]
 
-        sys.stdout.write(line)
+        try:
+            sys.stdout.write(line)
+        except UnicodeEncodeError:
+            safe_line = line.encode(sys.stdout.encoding or "utf-8", errors="replace").decode(sys.stdout.encoding or "utf-8", errors="replace")
+            sys.stdout.write(safe_line)
         sys.stdout.flush()
 
         if current >= self.total:

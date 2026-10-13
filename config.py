@@ -15,7 +15,6 @@ XML_WORKERS = 8
 MAX_RETRIES = 3
 
 EXCEL_FILENAME = "NSE_PIT_Disclosures.xlsx"
-CSV_FILENAME = "NSE_PIT_Disclosures.csv"
 
 DEFAULT_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "

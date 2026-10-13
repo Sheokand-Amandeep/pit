@@ -11,6 +11,13 @@ import argparse
 from datetime import datetime, date
 from pathlib import Path
 import shutil
+import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 from config import CACHE_DIR
 from nse_client import NSEClient
@@ -100,7 +107,7 @@ def main() -> None:
         company = str(api_record.get("symbol") or api_record.get("companyName") or "")
         progress.update(i, company)
 
-    excel_path, csv_path = export(rows)
+    excel_path = export(rows)
 
     print("\n" + "=" * 42)
     print("COMPLETE")
@@ -108,8 +115,7 @@ def main() -> None:
     print(f"Filing rows received : {len(records):,}")
     print(f"Disclosure rows      : {len(rows):,}")
     print(f"Failed filings       : {len(failures):,}")
-    print(f"Excel                : {excel_path}")
-    print(f"CSV                  : {csv_path}")
+    print(f"Excel Output         : {excel_path}")
 
     if failures:
         print("\nFirst failures:")

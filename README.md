@@ -156,10 +156,13 @@ python main.py --help
 
 After processing completes, formatted reports are automatically saved to the `output/` folder:
 
-* `output/NSE_PIT_Disclosures.xlsx` — Formatted Excel workbook containing:
-  * **Main Sheet**: Clean, human-readable fields (Company Name, Symbol, Person Name, Category, Acquisition/Disposal, Shares, Price, Total Value, Transaction Date, Mode, Post-Transaction Holdings, Revision Details).
-  * **Source Details Sheet**: Technical URLs, broadcast timestamps, and XBRL metadata.
-* `output/NSE_PIT_Disclosures.csv` — CSV format for automated data analysis and database import.
+* `output/NSE_PIT_Disclosures.xlsx` — Premium Excel workbook containing:
+  * **Sheet 1: Company Insights**: Company-wise aggregation & rating system featuring:
+    * **Conviction Score (0-100)**, **Star Rating (1 to 5 Stars)** & **Bullish/Bearish Signal** based on promoter buying conviction, cluster trades, and net open-market transaction value.
+    * **Net Open Market Buy (₹ Cr)**, **Open Market Buy (₹ Cr)**, **Open Market Sell (₹ Cr)**, and **ESOP Value (₹ Cr)**.
+    * **Promoter Buyers & Sellers**, total disclosures, unique insiders count.
+    * **Automated Key Insight Sentences** highlighting high-conviction insider trading actions.
+  * **Sheet 2: PIT Disclosures**: Detailed list of all individual disclosure transactions (Company Name, Symbol, Person Name, Category, Acquisition/Disposal, Shares, Price, Total Value, Transaction Date, Mode, Holdings, Revision Details).
 
 ---
 
@@ -177,5 +180,5 @@ pit/
 ├── xml_parser.py       # XBRL XML parser & field extraction engine
 ├── normalizer.py       # Data cleaning, field mapping, and price calculations
 ├── progress.py         # Terminal progress bar with ETA calculations
-└── exporter.py         # Excel (.xlsx) and CSV export formatter
+└── exporter.py         # Excel (.xlsx) export & Company Insights rating engine
 ```
